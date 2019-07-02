@@ -7,27 +7,42 @@
 	"plugins":[
 		"-search",
 		"search-pro",
-        "back-to-top-button",
+		"github",
         "chapter-fold",
         "code",
+		"copy-code-button",
         "splitter",
-        "tbfed-pagefooter",
-        "page-treeview"
+		"page-footer-ex",
+		"simple-page-toc",
+		"anchor-navigation-ex"
     ],
     "pluginsConfig":{
 		"search-pro": {
 			"cutWordLib": "nodejieba",
 			"defineWord" : ["Gitbook Use"]
 		},
-        "tbfed-pagefooter": {
-            "copyright": "Copyright &copy Aron.Li 2019",
-            "modify_label": "该文件修订时间：",
-            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        "page-footer-ex": {
+            "copyright": "By <em>Dazzle Lin</em>",
+            "markdown": false,
+            "update_label": "<i>updated</i>",
+            "update_format": "YYYY-MM-DD HH:mm:ss"
         },
-        "page-treeview": {
-            "copyright": "Copyright &#169; aleen42",
-            "minHeaderCount": "2",
-            "minHeaderDeep": "2"
-        }
+		"simple-page-toc": {
+            "maxDepth": 3,
+            "skipFirstH1": true
+        },
+		"github": {
+			"url": "https://github.com/linqinye"
+		},
+		"anchor-navigation-ex": {
+			"showLevel": false,
+			"multipleH1":false,
+			"float": { 
+				"showLevelIcon": true,
+				"level1Icon": "fa fa-hand-o-right",
+				"level2Icon": "fa fa-hand-o-right",
+				"level3Icon": "fa fa-hand-o-right"
+			}
+		}
     }
 }

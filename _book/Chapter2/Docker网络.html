@@ -1,0 +1,540 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker网络 · 编写docker学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Dazzle">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Docker存储.html" />
+    
+    
+    <link rel="prev" href="Docker容器.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Chapter1/容器生态系统.html">
+            
+                <a href="../Chapter1/容器生态系统.html">
+            
+                    
+                    容器生态系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Chapter1/容器核心技术.html">
+            
+                <a href="../Chapter1/容器核心技术.html">
+            
+                    
+                    容器核心技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Chapter1/容器平台技术.html">
+            
+                <a href="../Chapter1/容器平台技术.html">
+            
+                    
+                    容器平台技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Chapter1/容器支持技术.html">
+            
+                <a href="../Chapter1/容器支持技术.html">
+            
+                    
+                    容器支持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Chapter1/CentOS7部署docker.html">
+            
+                <a href="../Chapter1/CentOS7部署docker.html">
+            
+                    
+                    CentOS7部署docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="容器核心概论.html">
+            
+                <a href="容器核心概论.html">
+            
+                    
+                    容器核心概论
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Docker的核心组件.html">
+            
+                <a href="Docker的核心组件.html">
+            
+                    
+                    Docker的核心组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="Docker镜像.html">
+            
+                <a href="Docker镜像.html">
+            
+                    
+                    Docker镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="Docker容器.html">
+            
+                <a href="Docker容器.html">
+            
+                    
+                    Docker容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="Docker网络.html">
+            
+                <a href="Docker网络.html">
+            
+                    
+                    Docker网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="Docker存储.html">
+            
+                <a href="Docker存储.html">
+            
+                    
+                    Docker存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Docker网络</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#none&#x7F51;&#x7EDC;"><b></b>none&#x7F51;&#x7EDC;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#host&#x7F51;&#x7EDC;"><b></b>host&#x7F51;&#x7EDC;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#bridge&#x7F51;&#x7EDC;"><b></b>bridge&#x7F51;&#x7EDC;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#user-defined&#x7F51;&#x7EDC;"><b></b>user-defined&#x7F51;&#x7EDC;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x6307;&#x5B9A;ip&#x7F51;&#x6BB5;"><b></b>&#x6307;&#x5B9A;IP&#x7F51;&#x6BB5;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x6307;&#x5B9A;&#x9759;&#x6001;ip&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;ip"><b></b>&#x6307;&#x5B9A;&#x9759;&#x6001;IP(&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;IP)</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;"><b></b>&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;</a></li></ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;"><b></b>&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#ip&#x901A;&#x4FE1;"><b></b>IP&#x901A;&#x4FE1;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#docker-dns-server"><b></b>Docker DNS Server</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#joined&#x5BB9;&#x5668;"><b></b>joined&#x5BB9;&#x5668;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;"><b></b>&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;"><b></b>&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;"><b></b>&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;</a></li></ul></ul></ul></div><a href="#none&#x7F51;&#x7EDC;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><p>Docker&#x5B89;&#x88C5;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x5728;host&#x4E0A;&#x521B;&#x5EFA;&#x4E09;&#x4E2A;&#x7F51;&#x7EDC;&#xFF0C;docker network ls&#x547D;&#x4EE4;&#x67E5;&#x770B;</p>
+<h1 id="none&#x7F51;&#x7EDC;"><a name="none&#x7F51;&#x7EDC;" class="anchor-navigation-ex-anchor" href="#none&#x7F51;&#x7EDC;"><i class="fa fa-link" aria-hidden="true"></i></a>none&#x7F51;&#x7EDC;</h1>
+<p>&#x9664;&#x4E86;lo&#xFF0C;&#x5176;&#x4F59;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;--network=none&#x6307;&#x5B9A;</p>
+<pre><code class="lang-java">docker run -it --network=none busybox
+</code></pre>
+<p>&#x5C01;&#x95ED;&#x610F;&#x5473;&#x7740;&#x9694;&#x79BB;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x5B89;&#x5168;&#x6027;&#x8981;&#x6C42;&#x9AD8;&#x4E14;&#x4E0D;&#x9700;&#x8981;&#x8054;&#x7F51;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x751F;&#x6210;&#x968F;&#x673A;&#x5BC6;&#x7801;</p>
+<h1 id="host&#x7F51;&#x7EDC;"><a name="host&#x7F51;&#x7EDC;" class="anchor-navigation-ex-anchor" href="#host&#x7F51;&#x7EDC;"><i class="fa fa-link" aria-hidden="true"></i></a>host&#x7F51;&#x7EDC;</h1>
+<p>&#x8FDE;&#x63A5;&#x5230;host&#x7F51;&#x7EDC;&#x7684;&#x5BB9;&#x5668;&#x5171;&#x4EAB;Docker host&#x7684;&#x7F51;&#x7EDC;&#x6808;&#x3002;&#x53EF;&#x901A;&#x8FC7;--network=host&#x6307;&#x5B9A;</p>
+<p>&#x6700;&#x5927;&#x7684;&#x597D;&#x5904;&#x662F;&#x6027;&#x80FD;&#xFF0C;&#x82E5;&#x5BB9;&#x5668;&#x5BF9;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x6548;&#x7387;&#x6709;&#x8F83;&#x9AD8;&#x8981;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;host&#x7F51;&#x7EDC;&#x3002;&#x727A;&#x7272;&#x4E00;&#x4E9B;&#x7075;&#x6D3B;&#x6027;&#xFF0C;Docker host&#x4E0A;&#x4F7F;&#x7528;&#x8FC7;&#x7684;&#x7AEF;&#x53E3;&#x4E0D;&#x80FD;&#x518D;&#x7528;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x7528;&#x9014;&#x662F;&#x8BA9;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x914D;&#x7F6E;host&#x7F51;&#x8DEF;&#x3002;</p>
+<h1 id="bridge&#x7F51;&#x7EDC;"><a name="bridge&#x7F51;&#x7EDC;" class="anchor-navigation-ex-anchor" href="#bridge&#x7F51;&#x7EDC;"><i class="fa fa-link" aria-hidden="true"></i></a>bridge&#x7F51;&#x7EDC;</h1>
+<p>docker&#x5BB9;&#x5668;&#x9ED8;&#x8BA4;&#x7684;&#x7F51;&#x7EDC;</p>
+<p>&#x5B89;&#x88C5;bridge-utils&#x5DE5;&#x5177;&#x5305;</p>
+<pre><code>yum -y install bridge-utils
+yum -y install initscripts
+brctl show    //&#x5F53;&#x524D;host&#x7684;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;
+</code></pre><p><img src="images/docker-10.png" alt="10"></p>
+<font color="red">veth2121b73&#x5373;&#x65B0;&#x521B;&#x5EFA;&#x5BB9;&#x5668;&#x7684;&#x865A;&#x62DF;&#x7F51;&#x5361;&#x3002;&#x5BB9;&#x5668;&#x4E2D;&#x4F1A;&#x5B58;&#x5728;&#x5BF9;&#x5E94;&#x7684;&#x7F51;&#x5361;&#x3002;&#x5BB9;&#x5668;&#x7F51;&#x5361;&#x548C;veth2121b73&#x662F;&#x4E00;&#x5BF9;veth pair&#x3002;veth pair&#x662F;&#x4E00;&#x79CD;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#x7684;&#x7279;&#x6B8A;&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x6210;&#x4E00;&#x6839;&#x865A;&#x62DF;&#x7F51;&#x7EBF;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x7684;&#x4E00;&#x5BF9;&#x7F51;&#x5361;&#xFF0C;&#x4E00;&#x5934;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#xFF0C;&#x53E6;&#x4E00;&#x5934;veth2121b73&#x6302;&#x7F51;&#x6865;docker0&#x4E0A;&#xFF0C;&#x5176;&#x6548;&#x679C;&#x5C31;&#x662F;&#x5C06;&#x5BB9;&#x5668;&#x7F51;&#x5361;&#x4E5F;&#x6302;&#x5728;&#x4E86;docker0&#x4E0A;&#x3002;</font>
+
+<pre><code>docker network inspect bridge
+</code></pre><p><img src="images/docker-11.png" alt="11"></p>
+<p><img src="images/docker-12.png" alt="12"></p>
+<p>&#x7F51;&#x5173;&#x5C31;&#x662F;docker0</p>
+<p>&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;docker&#x4F1A;&#x81EA;&#x52A8;&#x4ECE;172.17.0.0/16&#x4E2D;&#x5206;&#x914D;&#x4E00;&#x4E2A;IP&#x3002;</p>
+<h1 id="user-defined&#x7F51;&#x7EDC;"><a name="user-defined&#x7F51;&#x7EDC;" class="anchor-navigation-ex-anchor" href="#user-defined&#x7F51;&#x7EDC;"><i class="fa fa-link" aria-hidden="true"></i></a>user-defined&#x7F51;&#x7EDC;</h1>
+<p>&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x9700;&#x8981;&#x81EA;&#x4E3B;&#x521B;&#x5EFA;user-defined&#x7F51;&#x7EDC;</p>
+<p>Docker&#x63D0;&#x4F9B;&#x4E09;&#x79CD;user-defined&#x7F51;&#x7EDC;&#x9A71;&#x52A8;&#xFF1A;bridge&#x3001;&#x521B;&#x5EFA;&#x8DE8;&#x4E3B;&#x673A;&#x7684;&#x7F51;&#x7EDC;(overlay&#x548C;macvlan)&#x3002;</p>
+<p>&#x901A;&#x8FC7;bridge&#x9A71;&#x52A8;&#x521B;&#x5EFA;bridge&#x7F51;&#x7EDC;</p>
+<pre><code>docker network create --driver bridge my_net
+</code></pre><p><img src="images/docker-13.png" alt="13"></p>
+<p>&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x7F51;&#x6865;br-a9ee1053f761&#xFF0C;a9ee1053f761&#x6B63;&#x597D;&#x662F;&#x65B0;&#x5EFA;bridge&#x7F51;&#x7EDC;my_net&#x77ED;ID</p>
+<p><img src="images/docker-14.png" alt="14"></p>
+<h2 id="&#x6307;&#x5B9A;ip&#x7F51;&#x6BB5;"><a name="&#x6307;&#x5B9A;ip&#x7F51;&#x6BB5;" class="anchor-navigation-ex-anchor" href="#&#x6307;&#x5B9A;ip&#x7F51;&#x6BB5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6307;&#x5B9A;IP&#x7F51;&#x6BB5;</h2>
+<p>--subnet&#x548C;--gateway&#x53C2;&#x6570;</p>
+<pre><code>docker network create --driver bridge --subnet 172.22.16.0/24 --gateway 172.22.16.1 my_net2
+</code></pre><p><img src="images/docker-15.png" alt="15"></p>
+<p><img src="images/docker-16.png" alt="16"></p>
+<p>&#x5BB9;&#x5668;&#x8981;&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x9700;&#x8981;&#x542F;&#x52A8;&#x65F6;&#x901A;&#x8FC7;--network&#x6307;&#x5B9A;</p>
+<pre><code class="lang-java">docker run -it --network=my_net2 busybox
+</code></pre>
+<h2 id="&#x6307;&#x5B9A;&#x9759;&#x6001;ip&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;ip"><a name="&#x6307;&#x5B9A;&#x9759;&#x6001;ip&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;ip" class="anchor-navigation-ex-anchor" href="#&#x6307;&#x5B9A;&#x9759;&#x6001;ip&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;ip"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6307;&#x5B9A;&#x9759;&#x6001;IP(&#x53EA;&#x6709;&#x4F7F;&#x7528;--subnet&#x521B;&#x5EFA;&#x7684;&#x7F51;&#x7EDC;&#x624D;&#x80FD;&#x6307;&#x5B9A;&#x9759;&#x6001;IP)</h2>
+<p>&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x5BB9;&#x5668;&#x7684;IP&#x90FD;&#x662F;docker&#x81EA;&#x52A8;&#x4ECE;subnet&#x4E2D;&#x5206;&#x914D;</p>
+<pre><code class="lang-java">docker run -it --network=my_net2 --ip <span class="hljs-number">172.22</span>.16.8 busybox
+</code></pre>
+<p><strong>&#x4E24;&#x4E2A;busybox&#x5BB9;&#x5668;&#x90FD;&#x6302;&#x5728;my_net2&#x4E0A;&#xFF0C;&#x540C;&#x4E00;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x5BB9;&#x5668;&#x3001;&#x7F51;&#x5173;&#x4E4B;&#x95F4;&#x7F51;&#x7EDC;&#x4E92;&#x901A;</strong></p>
+<h2 id="&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;"><a name="&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;" class="anchor-navigation-ex-anchor" href="#&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;</h2>
+<p>&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#x52A0;&#x4E0A;&#x8DEF;&#x7531;&#x53EF;&#x4EE5;&#x901A;&#x4FE1;&#x3002;</p>
+<p>host&#x4E0A;&#x5BF9;&#x6BCF;&#x4E2A;&#x90FD;&#x6709;&#x4E00;&#x6761;&#x8DEF;&#x7531;&#xFF0C;&#x540C;&#x65F6;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0A;&#x6253;&#x5F00;&#x4E86;ip forwarding&#xFF0C;host&#x5C31;&#x6210;&#x4E86;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x6302;&#x8F7D;&#x5728;&#x4E0D;&#x540C;&#x7F51;&#x6865;&#x4E0A;&#x7684;&#x7F51;&#x7EDC;&#x5C31;&#x80FD;&#x591F;&#x76F8;&#x4E92;&#x901A;&#x4FE1;&#x3002;</p>
+<p><strong><em>&#x68C0;&#x67E5;</em></strong></p>
+<pre><code class="lang-java">ip r            <span class="hljs-comment">//&#x67E5;&#x770B;host&#x4E0A;&#x7684;&#x8DEF;&#x7531;&#x8868;</span>
+</code></pre>
+<p>&#x67E5;&#x770B;ip forwarding&#x662F;&#x5426;&#x542F;&#x7528;</p>
+<pre><code>[root@lqy-ali ~]# sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward = 1            //&#x5DF2;&#x542F;&#x7528;
+</code></pre><p><strong><em>&#x539F;&#x56E0;</em></strong></p>
+<pre><code>iptables-save
+</code></pre><p>iptables DROP&#x6389;&#x4E0D;&#x540C;&#x7F51;&#x6865;&#x4E4B;&#x95F4;&#x7684;&#x53CC;&#x5411;&#x6D41;&#x91CF;</p>
+<p>&#x4ECE;&#x89C4;&#x5219;&#x547D;&#x540D;DOCKER-ISOLATION&#x53EF;&#x77E5;docker&#x5728;&#x8BBE;&#x8BA1;&#x4E0A;&#x5C31;&#x8981;&#x9694;&#x79BB;&#x4E0D;&#x540C;&#x7684;network</p>
+<p><strong><em>&#x5982;&#x4F55;&#x624D;&#x8BA9;&#x4E0D;&#x540C;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;</em></strong></p>
+<p>&#x4E3A;httpd&#x5BB9;&#x5668;&#x6DFB;&#x52A0;&#x4E00;&#x5757;net_my2&#x7F51;&#x5361;&#xFF0C;&#x901A;&#x8FC7;docker network connect&#xFF08;&#x5C06;&#x73B0;&#x6709;&#x5BB9;&#x5668;&#x52A0;&#x5165;&#x6307;&#x5B9A;&#x7F51;&#x7EDC;&#xFF09;&#x5B9E;&#x73B0;</p>
+<pre><code>docker network connect my_net2 httpd&#x5BB9;&#x5668;&#x77ED;ID
+</code></pre><p>&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x4E86; &#x3002;</p>
+<h1 id="&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;"><a name="&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;" class="anchor-navigation-ex-anchor" href="#&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5BB9;&#x5668;&#x95F4;&#x901A;&#x4FE1;</h1>
+<p>&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x53EF;&#x901A;&#x8FC7;IP&#x3001;Docker DNS Server&#x6216;joined&#x5BB9;&#x5668;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x901A;&#x4FE1;</p>
+<h2 id="ip&#x901A;&#x4FE1;"><a name="ip&#x901A;&#x4FE1;" class="anchor-navigation-ex-anchor" href="#ip&#x901A;&#x4FE1;"><i class="fa fa-link" aria-hidden="true"></i></a>IP&#x901A;&#x4FE1;</h2>
+<p>&#x4E24;&#x4E2A;&#x5BB9;&#x5668;&#x8981;&#x901A;&#x4FE1;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x7684;&#x7F51;&#x5361;&#x3002;</p>
+<p><strong><em>&#x7F3A;&#x70B9;</em></strong>&#xFF1A;</p>
+<p>&#x4E0D;&#x591F;&#x7075;&#x6D3B;&#xFF0C;&#x90E8;&#x7F72;&#x5E94;&#x7528;&#x4E4B;&#x524D;&#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;IP&#xFF0C;&#x90E8;&#x7F72;&#x4E4B;&#x540E;&#x518D;&#x6307;&#x5B9A;&#x8981;&#x8BBF;&#x95EE;IP&#xFF0C;&#x8F83;&#x9EBB;&#x70E6;</p>
+<p><strong><em>&#x5177;&#x4F53;&#x505A;&#x6CD5;</em></strong>&#xFF1A;</p>
+<p>&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x65F6;&#x901A;&#x8FC7;--network&#x6307;&#x5B9A;&#x76F8;&#x5E94;&#x7F51;&#x7EDC;&#xFF0C;&#x6216;&#x901A;&#x8FC7;docker network connect&#x5C06;&#x73B0;&#x6709;&#x5BB9;&#x5668;&#x52A0;&#x5165;&#x6307;&#x5B9A;&#x7F51;&#x7EDC;&#x3002;</p>
+<h2 id="docker-dns-server"><a name="docker-dns-server" class="anchor-navigation-ex-anchor" href="#docker-dns-server"><i class="fa fa-link" aria-hidden="true"></i></a>Docker DNS Server</h2>
+<p>Docker  1.10&#x7248;&#x672C;&#x540E;&#xFF0C;docker daemon&#xFF08;&#x670D;&#x52A1;&#x7AEF;&#xFF09;&#x5B9E;&#x73B0;&#x4E86;&#x5185;&#x5D4C;DNS server&#xFF0C;&#x4F7F;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5BB9;&#x5668;&#x540D;&#x901A;&#x4FE1;&#x3002;</p>
+<p><strong><em>&#x5177;&#x4F53;&#x505A;&#x6CD5;&#xFF1A;</em></strong></p>
+<p>&#x542F;&#x52A8;&#x65F6;&#x7528;--name&#x4E3A;&#x5BB9;&#x5668;&#x547D;&#x540D;</p>
+<pre><code>docker run -it --network=my_net2 --name=bbox1 busybox 
+docker run -it --network=my_net2 --name=bbox2 busybox
+</code></pre><p>&#x5728;bbox2&#x5BB9;&#x5668;&#x4E2D;&#x80FD;ping&#x5230;bbox1.</p>
+<p><strong><em>&#x9650;&#x5236;</em></strong></p>
+<p>&#x53EA;&#x80FD;&#x5728;user-defined&#x7F51;&#x7EDC;&#x4F7F;&#x7528;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;bridge&#x7F51;&#x7EDC;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;DNS</p>
+<h2 id="joined&#x5BB9;&#x5668;"><a name="joined&#x5BB9;&#x5668;" class="anchor-navigation-ex-anchor" href="#joined&#x5BB9;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>joined&#x5BB9;&#x5668;</h2>
+<p>&#x975E;&#x5E38;&#x7279;&#x522B;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x4E24;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x5171;&#x4EAB;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x6808;&#xFF0C;&#x5171;&#x4EAB;&#x7F51;&#x5361;&#x548C;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;joined&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x53EF;&#x901A;&#x8FC7;127.0.0.1&#x76F4;&#x63A5;&#x901A;&#x4FE1;&#x3002;</p>
+<p><strong><em>&#x6D4B;&#x8BD5;</em></strong>&#xFF1A;</p>
+<pre><code>docker run -d -it --name=web1 httpd
+</code></pre><pre><code>&#x6307;&#x5B9A;joined&#x5BB9;&#x5668;&#x4E3A;web1
+docker run -it --network=container:web1 busybox
+</code></pre><p>busybox&#x548C;web1&#x7684;&#x7F51;&#x5361;mac&#x5730;&#x5740;&#x4E0E;IP&#x5B8C;&#x5168;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x4EEC;&#x5171;&#x4EAB;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#x6808;&#x3002;busybox&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x7528;127.0.0.1&#x8BBF;&#x95EE;web1&#x7684;http&#x670D;&#x52A1;&#x3002;</p>
+<p><strong><em>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;</em></strong></p>
+<p>1.&#x4E0D;&#x540C;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x5E0C;&#x671B;&#x901A;&#x8FC7;loopback&#x9AD8;&#x6548;&#x5FEB;&#x901F;&#x5730;&#x901A;&#x4FE1;&#xFF0C;&#x6BD4;&#x5982;Web Server&#x4E0E;App Server</p>
+<p>2.&#x5E0C;&#x671B;&#x76D1;&#x63A7;&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x7684;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#xFF0C;&#x6BD4;&#x5982;&#x8FD0;&#x884C;&#x5728;&#x72EC;&#x7ACB;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x76D1;&#x63A7;&#x7A0B;&#x5E8F;&#x3002;</p>
+<h2 id="&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;"><a name="&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C06;&#x5BB9;&#x5668;&#x4E0E;&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8FDE;&#x63A5;</h2>
+<h3 id="&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;"><a name="&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;" class="anchor-navigation-ex-anchor" href="#&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x5916;&#x90E8;&#x4E16;&#x754C;</h3>
+<p>&#x5BB9;&#x5668;&#x9ED8;&#x8BA4;&#x80FD;&#x8BBF;&#x95EE;&#x5916;&#x7F51;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x5916;&#x7F51;&#x6307;&#x5BB9;&#x5668;&#x7F51;&#x7EDC;&#x4EE5;&#x5916;&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#xFF0C;&#x5E76;&#x975E;&#x7279;&#x6307;Intenet.</p>
+<p>&#x5F53;busybox&#x4ECE;&#x5BB9;&#x5668;&#x5411;&#x5916;ping&#x65F6;&#xFF0C;&#x6570;&#x636E;&#x5305;&#x662F;&#x5982;&#x4F55;&#x5230;&#x8FBE;bing.com</p>
+<p><strong><em>&#x5173;&#x952E;&#x662F;NAT</em></strong></p>
+<p>&#x67E5;&#x770B;docker host&#x4E0A;&#x7684;iptables&#x89C4;&#x5219;</p>
+<pre><code>iptables -t nat -S
+</code></pre><p><img src="images/docker-17.png" alt="17"></p>
+<p>&#x542B;&#x4E49;&#xFF1A;&#x5982;&#x679C;&#x7F51;&#x6865;docker0&#x6536;&#x5230;&#x6765;&#x81EA;172.17.0.0/16&#x7F51;&#x6BB5;&#x7684;&#x5916;&#x51FA;&#x5305;&#xFF0C;&#x628A;&#x5B83;&#x4EA4;&#x7ED9;MASQUERADE&#x5904;&#x7406;&#xFF0C;&#x5373;&#x5C06;&#x5305;&#x7684;&#x6E90;&#x5730;&#x5740;&#x66FF;&#x6362;&#x6210;host&#x5730;&#x5740;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x505A;&#x4E86;&#x4E00;&#x6B21;&#x7F51;&#x8DEF;&#x5730;&#x5740;&#x8F6C;&#x6362;&#xFF08;NAT&#xFF09;</p>
+<p><img src="images/docker-18.png" alt="18"></p>
+<p>&#x9ED8;&#x8BA4;&#x8DEF;&#x7531;&#x901A;&#x8FC7;eth0&#x53D1;&#x51FA;&#xFF0C;&#x9700;&#x8981;&#x76D1;&#x63A7;eth0&#x548C;docker0</p>
+<p>&#x5F53;busybox ping bing.com&#x65F6;&#xFF0C;tcpdump&#x8F93;&#x51FA;&#x5982;&#x4E0B;</p>
+<p><img src="images/docker-19.png" alt="19"></p>
+<h3 id="&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;"><a name="&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;" class="anchor-navigation-ex-anchor" href="#&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5916;&#x90E8;&#x4E16;&#x754C;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;</h3>
+<p><strong><em>&#x7AEF;&#x53E3;&#x6620;&#x5C04;</em></strong></p>
+<p>docker&#x53EF;&#x5C06;&#x5BB9;&#x5668;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x7AEF;&#x53E3;&#x6620;&#x5C04;&#x5230;host&#x7684;&#x67D0;&#x7AEF;&#x53E3;&#xFF0C;&#x5916;&#x7F51;&#x901A;&#x8FC7;&#x8BE5;&#x7AEF;&#x53E3;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x3002;</p>
+<p>-p&#x53C2;&#x6570;&#x6620;&#x5C04;&#x7AEF;&#x53E3;</p>
+<p><img src="images/docker-20.png" alt="20"></p>
+<p>&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x6620;&#x5C04;</p>
+<pre><code>docker run -d -p 8080:80 httpd
+</code></pre><p>&#x6BCF;&#x4E2A;&#x6620;&#x5C04;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;host&#x90FD;&#x4F1A;&#x542F;&#x52A8;&#x4E00;&#x4E2A;docker-proxy&#x8FDB;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x7684;&#x6D41;&#x91CF;</p>
+<pre><code>ps -ef|grep docker-proxy
+</code></pre><p><img src="images/docker-21.png" alt="21"></p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>Dazzle Lin</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2019-07-02 15:34:23 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Docker容器.html" class="navigation navigation-prev " aria-label="Previous page: Docker容器">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Docker存储.html" class="navigation navigation-next " aria-label="Next page: Docker存储">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker网络","level":"1.3.4","depth":2,"next":{"title":"Docker存储","level":"1.3.5","depth":2,"path":"Chapter2/Docker存储.md","ref":"Chapter2/Docker存储.md","articles":[]},"previous":{"title":"Docker容器","level":"1.3.3","depth":2,"path":"Chapter2/Docker容器.md","ref":"Chapter2/Docker容器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","github","chapter-fold","code","copy-code-button","splitter","page-footer-ex","simple-page-toc","anchor-navigation-ex","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/linqinye"},"livereload":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"page-footer-ex":{"copyright":"By <em>Dazzle Lin</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{"cutWordLib":"nodejieba","defineWord":["Gitbook Use"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Dazzle","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"编写docker学习笔记","language":"zh-hans","gitbook":"*","description":"编写docker学习笔记"},"file":{"path":"Chapter2/Docker网络.md","mtime":"2019-07-02T07:34:23.340Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T12:45:14.583Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
