@@ -1,0 +1,407 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第3节：容器支持技术 · 编写docker学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Dazzle">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CentOS7部署docker.html" />
+    
+    
+    <link rel="prev" href="容器平台技术.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="容器生态系统.html">
+            
+                <a href="容器生态系统.html">
+            
+                    
+                    容器生态系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="容器核心技术.html">
+            
+                <a href="容器核心技术.html">
+            
+                    
+                    第1节：容器核心技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="容器平台技术.html">
+            
+                <a href="容器平台技术.html">
+            
+                    
+                    第2节：容器平台技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="容器支持技术.html">
+            
+                <a href="容器支持技术.html">
+            
+                    
+                    第3节：容器支持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="CentOS7部署docker.html">
+            
+                <a href="CentOS7部署docker.html">
+            
+                    
+                    第4节：CentOS7部署docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Chapter2/容器核心概论.html">
+            
+                <a href="../Chapter2/容器核心概论.html">
+            
+                    
+                    容器核心概论
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Chapter2/Docker的核心组件.html">
+            
+                <a href="../Chapter2/Docker的核心组件.html">
+            
+                    
+                    第1节：Docker的核心组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第3节：容器支持技术</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#1&#x5BB9;&#x5668;&#x7F51;&#x7EDC;">1.&#x5BB9;&#x5668;&#x7F51;&#x7EDC;</a><i></i></div></li>
+<li><div><a href="#2&#x670D;&#x52A1;&#x53D1;&#x73B0;">2.&#x670D;&#x52A1;&#x53D1;&#x73B0;</a><i></i></div></li>
+<li><div><a href="#3&#x76D1;&#x63A7;">3.&#x76D1;&#x63A7;</a><i></i></div></li>
+<li><div><a href="#4&#x6570;&#x636E;&#x7BA1;&#x7406;">4.&#x6570;&#x636E;&#x7BA1;&#x7406;</a><i></i></div></li>
+<li><div><a href="#5&#x65E5;&#x5FD7;&#x7BA1;&#x7406;">5.&#x65E5;&#x5FD7;&#x7BA1;&#x7406;</a><i></i></div></li>
+<li><div><a href="#6&#x5B89;&#x5168;&#x6027;">6.&#x5B89;&#x5168;&#x6027;</a><i></i></div></li>
+</ul>
+</div>
+
+<p>&#x4E0B;&#x5217;&#x6280;&#x672F;&#x88AB;&#x7528;&#x4E8E;&#x652F;&#x6301;&#x57FA;&#x4E8E;&#x5BB9;&#x5668;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x65BD;</p>
+<h3 id="1&#x5BB9;&#x5668;&#x7F51;&#x7EDC;">1.&#x5BB9;&#x5668;&#x7F51;&#x7EDC;</h3>
+<p>&#x5BB9;&#x5668;&#x7684;&#x51FA;&#x73B0;&#x4F7F;&#x7F51;&#x7EDC;&#x62D3;&#x6251;&#x53D8;&#x7684;&#x66F4;&#x52A8;&#x6001;&#x548C;&#x590D;&#x6742;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x4E13;&#x95E8;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x548C;&#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x4E0E;&#x5BB9;&#x5668;&#x3001;&#x5BB9;&#x5668;&#x4E0E;&#x5176;&#x4ED6;&#x5B9E;&#x4F53;&#x4E4B;&#x95F4;&#x7684;&#x8FDE;&#x901A;&#x6027;&#x548C;&#x9694;&#x79BB;&#x6027;&#x3002;</p>
+<p>docker network&#x662F;Docker&#x539F;&#x751F;&#x7684;&#x7F51;&#x7EDC;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<h3 id="2&#x670D;&#x52A1;&#x53D1;&#x73B0;">2.&#x670D;&#x52A1;&#x53D1;&#x73B0;</h3>
+<p>&#x52A8;&#x6001;&#x53D8;&#x5316;&#x662F;&#x5FAE;&#x670D;&#x52A1;&#x5E94;&#x7528;&#x7684;&#x4E00;&#x5927;&#x7279;&#x70B9;&#x3002;</p>
+<p>&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x6280;&#x672F;&#x7684;&#x5DE5;&#x4F5C;&#xFF1A;&#x5728;&#x8FD9;&#x79CD;&#x52A8;&#x6001;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x4E00;&#x79CD;&#x673A;&#x5236;&#x8BA9;client&#x80FD;&#x591F;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x4F1A;&#x4FDD;&#x5B58;&#x5BB9;&#x5668;&#x96C6;&#x7FA4;&#x4E2D;&#x6240;&#x6709;&#x5FAE;&#x670D;&#x52A1;&#x6700;&#x65B0;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;Ip&#x3001;&#x7AEF;&#x53E3;&#xFF0C;&#x5E76;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;API&#xFF0C;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x67E5;&#x8BE2;&#x529F;&#x80FD;&#x3002;</p>
+<p>etcd&#x3001;consul&#x548C;zookeeper&#x662F;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x7684;&#x5178;&#x578B;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<h3 id="3&#x76D1;&#x63A7;">3.&#x76D1;&#x63A7;</h3>
+<p>docker ps/top/stats&#x662F;Docker&#x539F;&#x751F;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x76D1;&#x63A7;&#x5DE5;&#x5177;&#x3002;&#x9664;&#x547D;&#x4EE4;&#x884C;&#xFF0C;Docker&#x8FD8;&#x63D0;&#x4F9B;stats API,&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;HTTP&#x8BF7;&#x6C42;&#x83B7;&#x53D6;&#x5BB9;&#x5668;&#x7684;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x3002;</p>
+<p>sysdig&#x3001;cAdvisor/Heapster&#x548C;Weave Scope&#x662F;&#x5176;&#x4ED6;&#x5F00;&#x6E90;&#x7684;&#x5BB9;&#x5668;&#x76D1;&#x63A7;&#x65B9;&#x6848;&#x3002;</p>
+<h3 id="4&#x6570;&#x636E;&#x7BA1;&#x7406;">4.&#x6570;&#x636E;&#x7BA1;&#x7406;</h3>
+<p>&#x5BB9;&#x5668;&#x7ECF;&#x5E38;&#x4F1A;&#x5728;&#x4E0D;&#x540C;&#x7684;host&#x4E4B;&#x95F4;&#x8FC1;&#x79FB;&#xFF0C;&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x4E5F;&#x80FD;&#x52A8;&#x6001;&#x8FC1;&#x79FB;&#xFF0C;&#x662F;Rex-Ray&#x8FD9;&#x7C7B;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x63D0;&#x4F9B;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<h3 id="5&#x65E5;&#x5FD7;&#x7BA1;&#x7406;">5.&#x65E5;&#x5FD7;&#x7BA1;&#x7406;</h3>
+<p>&#x65E5;&#x5FD7;&#x4E3A;&#x95EE;&#x9898;&#x6392;&#x67E5;&#x548C;&#x4E8B;&#x4EF6;&#x7BA1;&#x7406;&#x63D0;&#x4F9B;&#x91CD;&#x8981;&#x4F9D;&#x636E;&#x3002;</p>
+<p>docker logs&#x662F;Docker&#x539F;&#x751F;&#x7684;&#x65E5;&#x5FD7;&#x5DE5;&#x5177;&#x3002;&#x800C;logspout&#x5BF9;&#x65E5;&#x5FD7;&#x63D0;&#x4F9B;&#x4E86;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6536;&#x96C6;&#x4E0D;&#x540C;&#x5BB9;&#x5668;&#x7684;&#x65E5;&#x5FD7;&#x5E76;&#x8F6C;&#x53D1;&#x7ED9;&#x5176;&#x4ED6;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x540E;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="6&#x5B89;&#x5168;&#x6027;">6.&#x5B89;&#x5168;&#x6027;</h3>
+<p>OpenSCAP&#x662F;&#x4E00;&#x79CD;&#x5BB9;&#x5668;&#x5B89;&#x5168;&#x5DE5;&#x5177;&#xFF0C;&#x80FD;&#x5BF9;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#xFF0C;&#x53D1;&#x73B0;&#x6F5C;&#x5728;&#x6F0F;&#x6D1E;&#x3002; </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Aron.Li 2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2019-07-02 11:08:36
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="容器平台技术.html" class="navigation navigation-prev " aria-label="Previous page: 第2节：容器平台技术">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CentOS7部署docker.html" class="navigation navigation-next " aria-label="Next page: 第4节：CentOS7部署docker">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第3节：容器支持技术","level":"1.2.3","depth":2,"next":{"title":"第4节：CentOS7部署docker","level":"1.2.4","depth":2,"path":"Chapter1/CentOS7部署docker.md","ref":"Chapter1/CentOS7部署docker.md","articles":[]},"previous":{"title":"第2节：容器平台技术","level":"1.2.2","depth":2,"path":"Chapter1/容器平台技术.md","ref":"Chapter1/容器平台技术.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","splitter","tbfed-pagefooter","page-treeview","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Aron.Li 2019","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"copyright":"Copyright &#169; aleen42","minHeaderCount":"2","minHeaderDeep":"2"},"chapter-fold":{},"livereload":{},"splitter":{},"search-pro":{"cutWordLib":"nodejieba","defineWord":["Gitbook Use"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Dazzle","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"编写docker学习笔记","language":"zh-hans","gitbook":"*","description":"编写docker学习笔记"},"file":{"path":"Chapter1/容器支持技术.md","mtime":"2019-07-02T03:08:36.616Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T05:28:37.562Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
