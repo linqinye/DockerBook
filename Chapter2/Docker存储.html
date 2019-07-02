@@ -1,0 +1,654 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker存储 · 编写docker学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Dazzle">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Docker网络.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Chapter1/容器生态系统.html">
+            
+                <a href="../Chapter1/容器生态系统.html">
+            
+                    
+                    容器生态系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Chapter1/容器核心技术.html">
+            
+                <a href="../Chapter1/容器核心技术.html">
+            
+                    
+                    容器核心技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Chapter1/容器平台技术.html">
+            
+                <a href="../Chapter1/容器平台技术.html">
+            
+                    
+                    容器平台技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Chapter1/容器支持技术.html">
+            
+                <a href="../Chapter1/容器支持技术.html">
+            
+                    
+                    容器支持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Chapter1/CentOS7部署docker.html">
+            
+                <a href="../Chapter1/CentOS7部署docker.html">
+            
+                    
+                    CentOS7部署docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="容器核心概论.html">
+            
+                <a href="容器核心概论.html">
+            
+                    
+                    容器核心概论
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Docker的核心组件.html">
+            
+                <a href="Docker的核心组件.html">
+            
+                    
+                    Docker的核心组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="Docker镜像.html">
+            
+                <a href="Docker镜像.html">
+            
+                    
+                    Docker镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="Docker容器.html">
+            
+                <a href="Docker容器.html">
+            
+                    
+                    Docker容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="Docker网络.html">
+            
+                <a href="Docker网络.html">
+            
+                    
+                    Docker网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.5" data-path="Docker存储.html">
+            
+                <a href="Docker存储.html">
+            
+                    
+                    Docker存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Docker存储</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#storage-driver"><b></b>storage driver</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#datavolume"><b></b>DataVolume</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#bind-mount"><b></b>bind mount</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;"><b></b>&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x9664;&#x4E86;bind-mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;"><b></b>&#x9664;&#x4E86;bind mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#docker-volume"><b></b>docker volume</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#docker-inspect"><b></b>docker inspect.....</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x4E24;&#x8005;&#x533A;&#x522B;"><b></b>&#x4E24;&#x8005;&#x533A;&#x522B;</a></li></ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;"><b></b>&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;"><b></b>&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;"><b></b>&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#volume-container"><b></b>volume container</a></li></ul></ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#data-packed-volume-container"><b></b>data-packed volume container</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#data-volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;"><b></b>Data Volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;</a></li><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5907;&#x4EFD;"><b></b>&#x5907;&#x4EFD;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x6062;&#x590D;"><b></b>&#x6062;&#x590D;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x8FC1;&#x79FB;"><b></b>&#x8FC1;&#x79FB;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x9500;&#x6BC1;"><b></b>&#x9500;&#x6BC1;</a></li></ul></ul></div><a href="#storage-driver" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><p>docker&#x4E3A;&#x5BB9;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#x8D44;&#x6E90;</p>
+<p>1.&#x7531;storage drive&#x7BA1;&#x7406;&#x7684;&#x6570;&#x636E;&#x5C42;&#xFF08;&#x955C;&#x50CF;&#x5C42;&#x548C;&#x5BB9;&#x5668;&#x5C42;&#xFF09;</p>
+<p>2.Data Volume</p>
+<h1 id="storage-driver"><a name="storage-driver" class="anchor-navigation-ex-anchor" href="#storage-driver"><i class="fa fa-link" aria-hidden="true"></i></a>storage driver</h1>
+<p><strong><em>&#x7279;&#x6027;</em></strong></p>
+<p>Copy-on-Write</p>
+<p>1.&#x65B0;&#x6570;&#x636E;&#x4F1A;&#x76F4;&#x63A5;&#x5B58;&#x653E;&#x5728;&#x6700;&#x4E0A;&#x9762;&#x7684;&#x5BB9;&#x5668;&#x5C42;</p>
+<p>2.&#x4FEE;&#x6539;&#x73B0;&#x6709;&#x6570;&#x636E;&#x4F1A;&#x5148;&#x4ECE;&#x955C;&#x50CF;&#x5C42;&#x5C06;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x5BB9;&#x5668;&#x5C42;&#xFF0C;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x4FDD;&#x5B58;&#x5728;&#x5BB9;&#x5668;&#x5C42;&#x4E2D;&#xFF0C;&#x955C;&#x50CF;&#x5C42;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;</p>
+<p>3.&#x5982;&#x679C;&#x591A;&#x4E2A;&#x5C42;&#x4E2D;&#x6709;&#x547D;&#x540D;&#x76F8;&#x540C;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x6237;&#x53EA;&#x80FD;&#x770B;&#x5230;&#x6700;&#x4E0A;&#x5C42;&#x7684;&#x6587;&#x4EF6;</p>
+<p><strong><em>&#x529F;&#x80FD;</em></strong></p>
+<p>&#x5B9E;&#x73B0;&#x4E86;&#x591A;&#x5C42;&#x6570;&#x636E;&#x7684;&#x5806;&#x53E0;&#x5E76;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x7684;&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x7684;&#x7EDF;&#x4E00;&#x89C6;&#x56FE;</p>
+<p>Docker&#x652F;&#x6301;&#x591A;&#x79CD;storage driver,&#x6709;AUFS&#x3001;Device Mapper&#x3001;Btrfs&#x3001;OverlayFS&#x3001;VFS&#x548C;ZFS</p>
+<p><strong><em>&#x5982;&#x4F55;&#x9009;&#x62E9;storage driver</em></strong></p>
+<p>&#x4F18;&#x5148;&#x4F7F;&#x7528;Linux&#x53D1;&#x884C;&#x7248;&#x9ED8;&#x8BA4;&#x7684;storage driver</p>
+<p><strong><em>&#x67E5;&#x770B;linux&#x73AF;&#x5883;&#x9ED8;&#x8BA4;&#x7684;driver</em></strong></p>
+<pre><code>docker info
+</code></pre><p><img src="images/docker-22.png" alt="22"></p>
+<p>driver&#x4F7F;&#x7528;Overlay2&#xFF0C;&#x5E95;&#x5C42;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;extfs&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x5BB9;&#x5668;&#xFF0C;&#x76F4;&#x63A5;&#x5C06;&#x6570;&#x636E;&#x653E;&#x5728;&#x7531;storage driver&#x7EF4;&#x62A4;&#x7684;&#x5C42;&#x4E2D;&#x662F;&#x6700;&#x597D;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x6BD4;&#x5982;&#x90A3;&#x4E9B;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x5E94;&#x7528;&#x3002;&#x65E0;&#x72B6;&#x6001;&#x610F;&#x5473;&#x7740;&#x5BB9;&#x5668;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x6301;&#x4E45;&#x5316;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x968F;&#x65F6;&#x53EF;&#x4EE5;&#x4ECE;&#x955C;&#x50CF;&#x76F4;&#x63A5;&#x521B;&#x5EFA;</p>
+<h1 id="datavolume"><a name="datavolume" class="anchor-navigation-ex-anchor" href="#datavolume"><i class="fa fa-link" aria-hidden="true"></i></a>DataVolume</h1>
+<p>&#x9002;&#x7528;&#x4E8E;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x9700;&#x6C42;&#xFF0C;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x5DF2;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x5BB9;&#x5668;&#x9500;&#x6BC1;&#x65F6;&#x5E0C;&#x671B;&#x4FDD;&#x7559;&#x4EA7;&#x751F;&#x7684;&#x65B0;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5BB9;&#x5668;&#x6709;&#x72B6;&#x6001;&#x3002;</p>
+<p><strong><em>&#x672C;&#x8D28;</em></strong></p>
+<p>Docker Host&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#xFF0C;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x88AB;mount&#x5230;&#x5BB9;&#x5668;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;</p>
+<p><strong><em>&#x7279;&#x70B9;</em></strong></p>
+<p>1.Data Volume&#x662F;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x975E;&#x6CA1;&#x6709;<strong>&#x683C;&#x5F0F;&#x5316;&#x7684;&#x78C1;&#x76D8;</strong>&#xFF08;&#x5757;&#x8BBE;&#x5907;&#xFF09;</p>
+<p>2.&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x8BFB;&#x5199;volume&#x4E2D;&#x7684;&#x6570;&#x636E;</p>
+<p>3.volume&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x88AB;<strong>&#x6C38;&#x4E45;&#x5730;&#x4FDD;&#x5B58;</strong>&#xFF0C;&#x5373;&#x4F7F;&#x4F7F;&#x7528;&#x5B83;&#x7684;<strong>&#x5BB9;&#x5668;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;</strong></p>
+<font color="red">&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x6570;&#x636E;&#x5C42;&#xFF08;&#x955C;&#x50CF;&#x5C42;&#x548C;&#x5BB9;&#x5668;&#x5C42;&#xFF09;&#x548C;volume&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B58;&#x653E;&#x6570;&#x636E;&#x3002;</font>
+
+<p><strong><em>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x573A;&#x666F;</em></strong></p>
+<p>1.Database&#x8F6F;&#x4EF6; vs Database&#x6570;&#x636E;</p>
+<p>2.Web &#x5E94;&#x7528; vs &#x5E94;&#x7528;&#x4EA7;&#x751F;&#x7684;&#x65E5;&#x5FD7;</p>
+<p>3.&#x6570;&#x636E;&#x5206;&#x6790;&#x8F6F;&#x4EF6; vs input/output&#x6570;&#x636E;</p>
+<p>4.Apache Server vs &#x9759;&#x6001;HTML&#x6587;&#x4EF6;</p>
+<p><strong>&#x524D;&#x8005;&#x653E;&#x5728;&#x6570;&#x636E;&#x5C42;&#xFF0C;&#x56E0;&#x4E3A;&#x65E0;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4F5C;&#x4E3A;&#x955C;&#x50CF;&#x4E00;&#x90E8;&#x5206;</strong></p>
+<p><strong>&#x540E;&#x8005;&#x9700;&#x8981;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#xFF0C;&#x4E0E;&#x955C;&#x50CF;&#x5206;&#x5F00;&#xFF0C;&#x56E0;&#x6B64;&#x653E;&#x5728;Data volume&#x4E2D;</strong></p>
+<font color="red">&#x76EE;&#x524D;&#x65E0;&#x6CD5;&#x8BBE;&#x7F6E;volume&#x7684;&#x5BB9;&#x91CF;&#xFF08;volume&#x662F;docker host&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5BB9;&#x91CF;&#x53D6;&#x51B3;&#x4E8E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#xFF09;</font>
+
+<p><strong><em>volume&#x7C7B;&#x578B;</em></strong></p>
+<h2 id="bind-mount"><a name="bind-mount" class="anchor-navigation-ex-anchor" href="#bind-mount"><i class="fa fa-link" aria-hidden="true"></i></a>bind mount</h2>
+<p>&#x5C06;Host&#x4E0A;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;mount&#x5230;&#x5BB9;&#x5668;</p>
+<p>-v&#x5C06;&#x5176;mount&#x5230;httpd&#x5BB9;&#x5668;</p>
+<p>-v&#x683C;&#x5F0F;</p>
+<pre><code>&lt;host path&gt;:&lt;container path&gt;
+</code></pre><pre><code>docker run -d -p 80:80 -v ~/htdocs:/usr/local/apache2/htdocs httpd
+</code></pre><p>/usr/local/apache2/htdocs&#x5C31;&#x662F;Apache Server&#x5B58;&#x653E;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x7684;&#x5730;&#x65B9;&#x3002;&#x7531;&#x4E8E;&#x8DEF;&#x5F84;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C;&#x539F;&#x6709;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x9690;&#x85CF;&#xFF0C;&#x66FF;&#x6362;&#x6210;~/htdocs/&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<font color="red">bind mount&#x53EF;&#x4EE5;&#x8BA9;host&#x4E0E;&#x5BB9;&#x5668;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x3002;</font>
+
+<font color="red">&#x5373;&#x4F7F;&#x5BB9;&#x5668;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;bind mount&#x4F9D;&#x7136;&#x5B58;&#x5728;&#x3002;</font>
+
+<h2 id="&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;"><a name="&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;" class="anchor-navigation-ex-anchor" href="#&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x6743;&#x9650;</h2>
+<pre><code>docker run -d -p 80:80 -v ~/htdocs:/usr/local/apache2/htdocs:ro httpd
+</code></pre><p>&#x9ED8;&#x8BA4;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x3002;</p>
+<p>ro&#x8BBE;&#x7F6E;&#x53EA;&#x8BFB;&#x6743;&#x9650;&#xFF0C;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x65E0;&#x6CD5;&#x5BF9;bind mount&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x53EA;&#x6709;host&#x6709;&#x6743;&#x4FEE;&#x6539;</p>
+<h2 id="&#x9664;&#x4E86;bind-mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;"><a name="&#x9664;&#x4E86;bind-mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x9664;&#x4E86;bind-mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9664;&#x4E86;bind mount&#x76EE;&#x5F55;&#xFF0C;&#x53EF;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;</h2>
+<p>&#x5C06;html&#x6587;&#x4EF6;&#x52A0;&#x5230;apache&#x4E2D;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x7559;&#x4E86;&#x5BB9;&#x5668;&#x539F;&#x6709;&#x7684;&#x6570;&#x636E;</p>
+<pre><code>docker run -d -p 80:80 -v ~/htdocs/index.html:/usr/local/apache2/htdocs/new_index.html httpd
+curl 127.0.0.1:80
+curl 127.0.0.1:80/new_index.html
+</code></pre><p><strong><em>&#x4F7F;&#x7528;&#x573A;&#x666F;</em></strong></p>
+<p>&#x53EA;&#x9700;&#x8981;&#x5411;&#x5BB9;&#x5668;&#x6DFB;&#x52A0;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x5E0C;&#x671B;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x3002;</p>
+<font color="red">&#x6CE8;&#x610F;&#xFF1A;</font>host&#x4E2D;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#xFF0C;&#x4E0D;&#x7136;&#x5F53;&#x4F5C;&#x4E00;&#x4E2A;&#x65B0;&#x76EE;&#x5F55;bind mount&#x7ED9;&#x5BB9;&#x5668;
+
+***&#x7F3A;&#x70B9;***
+
+bind mount&#x9700;&#x8981;&#x6307;&#x5B9A;host&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x7279;&#x5B9A;&#x8DEF;&#x5F84;&#xFF0C;&#x9650;&#x5236;&#x4E86;&#x5BB9;&#x5668;&#x53EF;&#x79FB;&#x690D;&#x6027;
+
+## docker managed volume
+
+***&#x4E0E;&#x524D;&#x8005;&#x6700;&#x5927;&#x7684;&#x533A;&#x522B;***
+
+&#x4E0D;&#x9700;&#x8981;&#x6307;&#x5B9A;mount&#x6E90;&#xFF0C;&#x6307;&#x660E;mount point&#x5373;&#x53EF;&#x3002;
+
+
+
+&#x901A;&#x8FC7;-v&#x544A;&#x8BC9;docker&#x9700;&#x8981;&#x4E00;&#x4E2A;data volume,&#x5E76;&#x5C06;&#x5176;Mount&#x5230;/usr/local/apache2/htdocs.
+
+```
+docker run -d -p 80:80 -v /usr/local/apache2/htdocs httpd
+```
+
+
+
+&#x5728;&#x5BB9;&#x5668;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;data volume&#x6240;&#x5728;
+
+```
+docker inspect image&#x957F;ID
+```
+
+<font color="red">Source&#x5C31;&#x662F;&#x8BE5;volume&#x5728;host&#x4E0A;&#x7684;&#x76EE;&#x5F55;</font>
+
+
+
+<p><strong><em>&#x539F;&#x7406;</em></strong></p>
+<p>&#x6BCF;&#x5F53;&#x5BB9;&#x5668;&#x7533;&#x8BF7;mount docker maneged volume&#x65F6;&#xFF0C;docker&#x90FD;&#x4F1A;&#x5728;/var/lib/docker/volumes&#x4E0B;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x5373;<strong>mount&#x6E90;</strong></p>
+<font color="red">&#x5982;&#x679C;mount point&#x6307;&#x5411;&#x7684;&#x662F;&#x5DF2;&#x6709;&#x76EE;&#x5F55;&#xFF0C;&#x539F;&#x6709;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x590D;&#x5236;&#x5230;volume&#x4E2D;&#x3002;&#x4F46;&#x6B64;&#x65F6;&#x8BE5;&#x76EE;&#x5F55;&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x662F;&#x7531;storage driver&#x7BA1;&#x7406;&#x7684;&#x5C42;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x662F;data volume</font>
+
+<h2 id="docker-volume"><a name="docker-volume" class="anchor-navigation-ex-anchor" href="#docker-volume"><i class="fa fa-link" aria-hidden="true"></i></a>docker volume</h2>
+<p>&#x53EA;&#x80FD;&#x67E5;&#x770B;docker managed volume&#xFF08;&#x76EE;&#x524D;&#x4E0D;&#x652F;&#x6301;bind volume&#x67E5;&#x770B;&#xFF09;</p>
+<pre><code>docker volume ls
+docker volume inspect image&#x957F;ID
+</code></pre><h2 id="docker-inspect"><a name="docker-inspect" class="anchor-navigation-ex-anchor" href="#docker-inspect"><i class="fa fa-link" aria-hidden="true"></i></a>docker inspect.....</h2>
+<p>&#x53EF;&#x67E5;&#x770B;volume&#x4FE1;&#x606F;&#x548C;&#x5BB9;&#x5668;</p>
+<h2 id="&#x4E24;&#x8005;&#x533A;&#x522B;"><a name="&#x4E24;&#x8005;&#x533A;&#x522B;" class="anchor-navigation-ex-anchor" href="#&#x4E24;&#x8005;&#x533A;&#x522B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E24;&#x8005;&#x533A;&#x522B;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x4E0D;&#x540C;&#x70B9;</th>
+<th>bind volume</th>
+<th>docker managed volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume&#x4F4D;&#x7F6E;</td>
+<td>&#x53EF;&#x4EFB;&#x610F;&#x6307;&#x5B9A;</td>
+<td>/var/lib/docker/volumes/...</td>
+</tr>
+<tr>
+<td>&#x5BF9;&#x5DF2;&#x6709;mount point&#x5F71;&#x54CD;</td>
+<td>&#x9690;&#x85CF;&#x5E76;&#x66FF;&#x6362;&#x4E3A;volume</td>
+<td>&#x539F;&#x6709;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;volume</td>
+</tr>
+<tr>
+<td>&#x662F;&#x5426;&#x652F;&#x6301;&#x5355;&#x6587;&#x4EF6;</td>
+<td>&#x652F;&#x6301;</td>
+<td>&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x53EA;&#x80FD;&#x76EE;&#x5F55;</td>
+</tr>
+<tr>
+<td>&#x6743;&#x9650;&#x63A7;&#x5236;</td>
+<td>&#x53EF;&#x8BBE;&#x7F6E;&#x53EA;&#x8BFB;&#xFF0C;&#x9ED8;&#x8BA4;&#x8BFB;&#x5199;</td>
+<td>&#x65E0;&#x63A7;&#x5236;&#xFF0C;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td>&#x79FB;&#x690D;&#x6027;</td>
+<td>&#x5F31;&#xFF0C;&#x4E0E;host path&#x7ED1;&#x5B9A;</td>
+<td>&#x5F3A;&#xFF0C;&#x65E0;&#x987B;&#x6307;&#x5B9A;host&#x76EE;&#x5F55;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;"><a name="&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;volume&#x7279;&#x6027;&#xFF09;</h1>
+<h2 id="&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;"><a name="&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;" class="anchor-navigation-ex-anchor" href="#&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5BB9;&#x5668;&#x4E0E;host&#x5171;&#x4EAB;&#x6570;&#x636E;</h2>
+<p><strong>bind mount</strong>:&#x76F4;&#x63A5;&#x5C06;&#x8981;&#x5171;&#x4EAB;&#x7684;&#x76EE;&#x5F55;mount&#x5230;&#x5BB9;&#x5668;</p>
+<p><strong>docker managed volume</strong>&#xFF1A;&#x7531;&#x4E8E;volume&#x4F4D;&#x4E8E;host&#x4E2D;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x662F;&#x5728;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x624D;&#x751F;&#x6210;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5C06;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;volume&#x4E2D;&#x3002;</p>
+<pre><code>docker run -d -p 80:80 -v /usr/local/apache2/htdocs httpd
+docker cp ~/htdocs/index.html image&#x77ED;ID:/usr/local/apache2/htdocs
+</code></pre><p>docker cp &#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x548C;host&#x4E4B;&#x95F4;&#x590D;&#x5236;&#x6570;&#x636E;</p>
+<h2 id="&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;"><a name="&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;" class="anchor-navigation-ex-anchor" href="#&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x6570;&#x636E;</h2>
+<ul>
+<li><p><strong>&#x5C06;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x653E;&#x5728;bind mount&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;mount&#x5230;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x3002;</strong></p>
+<p>1.&#x5C06;$HOME/htdocs mount&#x5230;&#x4E09;&#x4E2A;httpd&#x5BB9;&#x5668;</p>
+<pre><code>docker run --name webn -d -p 80 -v ~/htdocs:/usr/local/apache2/htdocs httpd
+</code></pre><p>2.&#x67E5;&#x770B;&#x5F53;&#x524D;&#x4E3B;&#x9875;</p>
+<pre><code>docker ps
+curl 127.0.0.1:3277n
+</code></pre><p>3.&#x4FEE;&#x6539;volume&#x4E2D;&#x7684;&#x4E3B;&#x9875;&#x6587;&#x4EF6;&#xFF0C;&#x518D;&#x67E5;&#x770B;&#x5E76;&#x786E;&#x8BA4;&#x6240;&#x6709;&#x5BB9;&#x5668;&#x90FD;&#x4F7F;&#x7528;&#x4E86;&#x65B0;&#x4E3B;&#x9875;</p>
+<pre><code>echo &quot;&#x4FEE;&#x6539;&#x5185;&#x5BB9;&quot; &gt; ~/htdocs/index.html
+curl 127.0.0.1:3277n
+</code></pre></li>
+<li><p><strong>&#x53E6;&#x4E00;&#x79CD;&#x4F7F;&#x7528;volume container</strong></p>
+</li>
+</ul>
+<h3 id="volume-container"><a name="volume-container" class="anchor-navigation-ex-anchor" href="#volume-container"><i class="fa fa-link" aria-hidden="true"></i></a>volume container</h3>
+<p>volume container&#x662F;&#x4E13;&#x95E8;&#x4E3A;&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x63D0;&#x4F9B;volume&#x7684;&#x5BB9;&#x5668;&#x3002;&#x63D0;&#x4F9B;&#x7684;&#x5377;&#x53EF;&#x4EE5;&#x662F;bind mount&#xFF0C;docker managed volume&#x3002;&#x521B;&#x5EFA;volume container</p>
+<pre><code>docker create --name vc_data \
+&gt;            -v ~/htdocs:/usr/local/apache2/htdocs \
+&gt;            -v /other/useful/tools \
+&gt;            busybox
+</code></pre><p><strong><em>&#x5206;&#x6790;</em></strong></p>
+<p>1.volume container&#x7684;&#x4F5C;&#x7528;&#x53EA;&#x662F;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x672C;&#x8EAB;&#x4E0D;&#x9700;&#x8981;&#x5904;&#x4E8E;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x6267;&#x884C;docker create</p>
+<p>2.&#x5BB9;&#x5668;mount&#x4E24;&#x4E2A;volume:</p>
+<p>&#x200B;                bind mount&#xFF0C;&#x5B58;&#x653E;Web Server&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;</p>
+<p>&#x200B;                docker managed volume,&#x5B58;&#x653E;&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x5DE5;&#x5177;</p>
+<p>3.&#x67E5;&#x770B;&#x8FD9;&#x4E24;&#x4E2A;volume</p>
+<pre><code>docker inspect vc_data
+</code></pre><p>4.&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;--volumes-from&#x4F7F;&#x7528;vc_data&#x8FD9;&#x4E2A;volume container</p>
+<pre><code>docker run --name webn -d -p 80 --volumes-from vc_data httpd
+</code></pre><p><strong><em>&#x7279;&#x70B9;</em></strong></p>
+<p>1.&#x4E0E;bind mount&#x76F8;&#x6BD4;&#xFF0C;&#x4E0D;&#x5FC5;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x6307;&#x5B9A;host path&#xFF0C;&#x6240;&#x6709;path&#x90FD;&#x5728;volume container&#x4E2D;&#x5B9A;&#x4E49;&#x597D;&#x4E86;&#xFF0C;&#x5BB9;&#x5668;&#x53EA;&#x9700;&#x4E0E;volume container&#x5173;&#x8054;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x5BB9;&#x5668;&#x4E0E;host&#x7684;&#x89E3;&#x8026;</p>
+<p>2.&#x4F7F;&#x7528;volume mount&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5176;mount point&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x914D;&#x7F6E;&#x7684;&#x89C4;&#x8303;&#x548C;&#x6807;&#x51C6;&#x5316;</p>
+<h1 id="data-packed-volume-container"><a name="data-packed-volume-container" class="anchor-navigation-ex-anchor" href="#data-packed-volume-container"><i class="fa fa-link" aria-hidden="true"></i></a>data-packed volume container</h1>
+<p>&#x5C06;&#x6570;&#x636E;&#x5B8C;&#x5168;&#x653E;&#x5230;volume container&#x4E2D;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x80FD;&#x4E0E;&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x5171;&#x4EAB;</p>
+<p><strong><em>&#x539F;&#x7406;</em></strong></p>
+<p>&#x5C06;&#x6570;&#x636E;&#x6253;&#x5305;&#x5230;&#x955C;&#x50CF;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;docker managed volume&#x5171;&#x4EAB;</p>
+<p><strong><em>&#x5B9E;&#x4F8B;</em></strong></p>
+<p>1.Dockerfile&#x6784;&#x5EFA;&#x955C;&#x50CF;</p>
+<pre><code>FROM busybox:latest
+ADD htdocs /usr/local/apache2/htdocs
+VOLUME /usr/local/apache2/htdocs
+</code></pre><p>ADD&#x5C06;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x5BB9;&#x5668;&#x76EE;&#x5F55;/usr/local/apache2/htdocs</p>
+<p>VOLUME&#x4F5C;&#x7528;&#x4E0E;-v&#x7B49;&#x6548;&#xFF0C;&#x7528;&#x6765;&#x521B;&#x5EFA;docker managed volume&#xFF0C;mount point&#x4E3A;/usr/local/apache2/htdocs&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5C31;&#x662F;ADD&#x6DFB;&#x52A0;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5C06;&#x5DF2;&#x6709;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;volume&#x4E2D;&#x3002;</p>
+<p>2.build&#x65B0;&#x955C;&#x50CF;datapacked</p>
+<pre><code>docker build -t datapacked
+</code></pre><p>3.&#x7528;&#x65B0;&#x955C;&#x50CF;&#x521B;&#x5EFA;data-packed volume container</p>
+<pre><code>docker create --name vc_data datapacked
+</code></pre><p>&#x56E0;&#x4E3A;&#x5728;Dockerfile&#x4E2D;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x4E86;VOLUME&#xFF0C;&#x6B64;&#x5904;&#x65E0;&#x987B;&#x6307;&#x5B9A;volume&#x7684;mount point</p>
+<p>4.&#x542F;&#x52A8;httpd&#x5BB9;&#x5668;&#x5E76;&#x4F7F;&#x7528;data-pack volume container</p>
+<pre><code>docker run -d -p 80:80 --volumes-from vc_data httpd
+</code></pre><p><strong><em>&#x4F18;&#x70B9;</em></strong></p>
+<p>&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x8BFB;&#x53D6;volume&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;data-packed volume container&#x662F;&#x81EA;&#x5305;&#x542B;&#x7684;&#xFF0C;&#x4E0D;&#x4F9D;&#x8D56;host&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;&#x5177;&#x6709;&#x5F3A;&#x79FB;&#x690D;&#x6027;</p>
+<p><strong><em>&#x9002;&#x7528;&#x573A;&#x666F;</em></strong></p>
+<p>&#x53EA;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x6570;&#x636E;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x6BD4;&#x5982;&#x5E94;&#x7528;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x3001;Web server&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;</p>
+<h1 id="data-volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;"><a name="data-volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#data-volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>Data Volume&#x751F;&#x4EA7;&#x5468;&#x671F;&#x7BA1;&#x7406;</h1>
+<h2 id="&#x5907;&#x4EFD;"><a name="&#x5907;&#x4EFD;" class="anchor-navigation-ex-anchor" href="#&#x5907;&#x4EFD;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5907;&#x4EFD;</h2>
+<p>volume&#x5B9E;&#x9645;&#x4E0A;&#x662F;host&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;volume&#x7684;&#x5907;&#x4EFD;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5BF9;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5907;&#x4EFD;</p>
+<p>&#x4E4B;&#x524D;&#x7684;&#x642D;&#x5EFA;&#x672C;&#x5730;Registry</p>
+<pre><code>docker run -d -p 5000:5000 -v /myregistry:/var/lib/registry registry:2
+</code></pre><p>&#x6240;&#x6709;&#x672C;&#x5730;&#x955C;&#x50CF;&#x90FD;&#x4FDD;&#x5B58;&#x5728;host&#x7684;/myregistry&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;&#x5B9A;&#x671F;&#x5907;&#x4EFD;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="&#x6062;&#x590D;"><a name="&#x6062;&#x590D;" class="anchor-navigation-ex-anchor" href="#&#x6062;&#x590D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6062;&#x590D;</h2>
+<p>&#x5982;&#x679C;&#x6570;&#x636E;&#x635F;&#x574F;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x4E4B;&#x524D;&#x5907;&#x4EFD;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;/myregistry&#x5373;&#x53EF;</p>
+<h2 id="&#x8FC1;&#x79FB;"><a name="&#x8FC1;&#x79FB;" class="anchor-navigation-ex-anchor" href="#&#x8FC1;&#x79FB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FC1;&#x79FB;</h2>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x4F7F;&#x7528;&#x66F4;&#x65B0;&#x7248;&#x672C;&#x7684;Registry&#xFF0C;&#x6D89;&#x53CA;&#x6570;&#x636E;&#x8FC1;&#x79FB;</p>
+<p>1.docker stop&#x5F53;&#x524D;Registry&#x5BB9;&#x5668;</p>
+<p>2.&#x542F;&#x52A8;&#x65B0;&#x7248;&#x672C;&#x5BB9;&#x5668;&#x5E76;mount&#x539F;&#x6709;volume</p>
+<pre><code>docker run -d -p 5000:5000 -v /myregistry:/var/lib/registry registry:latest
+</code></pre><p>&#x5728;&#x542F;&#x7528;&#x65B0;&#x5BB9;&#x5668;&#x524D;&#x8981;&#x786E;&#x4FDD;&#x65B0;&#x7248;&#x672C;&#x7684;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x53D1;&#x751F;&#x53D8;&#x5316;</p>
+<h2 id="&#x9500;&#x6BC1;"><a name="&#x9500;&#x6BC1;" class="anchor-navigation-ex-anchor" href="#&#x9500;&#x6BC1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9500;&#x6BC1;</h2>
+<font color="red">&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x4E0D;&#x9700;&#x8981;&#x7684;volume&#xFF0C;&#x4F46;&#x5220;&#x9664;&#x540E;&#x6570;&#x636E;&#x65E0;&#x6CD5;&#x627E;&#x56DE;</font>
+
+<p>docker&#x4E0D;&#x4F1A;&#x9500;&#x6BC1;bind mount&#xFF0C;&#x5220;&#x9664;&#x6570;&#x636E;&#x7684;&#x5DE5;&#x4F5C;&#x53EA;&#x80FD;&#x7531;host&#x8D1F;&#x8D23;&#x3002;</p>
+<p>docker managed volume&#x5728;&#x6267;&#x884C;docker rm &#x5220;&#x9664;&#x5BB9;&#x5668;&#x65F6;&#x53EF;&#x4EE5;&#x5E26;&#x4E0A;-v&#x53C2;&#x6570;&#xFF0C;docker&#x4F1A;&#x5C06;&#x5BB9;&#x5668;&#x4F7F;&#x7528;&#x5230;&#x7684;volume&#x4E00;&#x5E76;&#x5220;&#x9664;&#xFF0C;&#x4F46;&#x524D;&#x63D0;&#x662F;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x5BB9;&#x5668;mount&#x8BE5;volume.&#x76EE;&#x7684;&#x662F;&#x4FDD;&#x62A4;&#x6570;&#x636E;&#xFF0C;&#x975E;&#x5E38;&#x5408;&#x7406;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5220;&#x9664;&#x5BB9;&#x5668;&#x6CA1;&#x5E26;-v&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x5B64;&#x513F;volume&#x3002;&#x53EF;&#x901A;&#x8FC7;docker&#x63D0;&#x4F9B;&#x7684;volume&#x5B50;&#x547D;&#x4EE4;&#x5BF9;docker managed volume&#x8FDB;&#x884C;&#x7EF4;&#x62A4;&#x5982;&#x4E0B;:</p>
+<pre><code>docker volume ls
+docker run --name bbox -v /test/data busybox
+
+&#x5FD8;&#x8BB0;&#x5E26;-v
+docker rm bbox
+docker volume ls
+&#x5220;&#x9664;&#x5355;&#x4E2A;volume
+docker volume rm volume_name
+&#x6279;&#x91CF;&#x5220;&#x9664;
+docker volume rm $(docker volume ls -q)
+</code></pre><footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>Dazzle Lin</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2019-07-02 15:39:28 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Docker网络.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Docker网络">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker存储","level":"1.3.5","depth":2,"previous":{"title":"Docker网络","level":"1.3.4","depth":2,"path":"Chapter2/Docker网络.md","ref":"Chapter2/Docker网络.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","github","chapter-fold","code","copy-code-button","splitter","page-footer-ex","simple-page-toc","anchor-navigation-ex","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/linqinye"},"livereload":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"page-footer-ex":{"copyright":"By <em>Dazzle Lin</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{"cutWordLib":"nodejieba","defineWord":["Gitbook Use"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Dazzle","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"编写docker学习笔记","language":"zh-hans","gitbook":"*","description":"编写docker学习笔记"},"file":{"path":"Chapter2/Docker存储.md","mtime":"2019-07-02T07:39:28.765Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T12:45:14.583Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
